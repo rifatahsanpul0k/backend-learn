@@ -15,6 +15,24 @@
                 document.getElementById('name').innerText = names+'.';
             }
         )
+    </script>   
+
+    <input type="text" id="nameInput" placeholder="Type your name here" />
+    <button id="submitButton">Submit</button>
+
+    <script>
+        const button = document.getElementById('submitButton');
+        button.addEventListener('click',()=>{
+            const name = document.getElementById('nameInput').value;
+            const jsonInput = {name}
+            fetch('http://localhost:3000/love', {
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonInput)
+            })
+        })
     </script>
 </body>
 </html>
