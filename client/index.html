@@ -19,21 +19,33 @@
 
     <input type="text" id="nameInput" placeholder="Type your name here" />
     <input type="text" id="nameInput1" placeholder="Type spouse name here" />
+    <input type="text" id="message1" placeholder="Type spouse name here"/>
+
 
     <button id="submitButton">Submit</button>
+    <h2 id="yourLove"></h2>
+    <p id="message"></p>
+
 
     <script>
         const button = document.getElementById('submitButton');
         button.addEventListener('click',()=>{
             const name = document.getElementById('nameInput').value;
             const spouseName = document.getElementById('nameInput1').value;
-            const jsonInput = {name, spouseName};
+            message = document.getElementById('message1').value;
+            const jsonInput = {name, spouseName, message};
             fetch('http://localhost:3000/love', {
                 method:'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(jsonInput)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('yourLove').innerText = data.yourLove;
+                document.getElementById('message').innerText = data.message;
             })
         })
     </script>

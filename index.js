@@ -31,8 +31,8 @@ app.get('/users',(req, res)=>{
 app.post('/love',(req, res)=>{
     console.log(req.body);
     res.send({
-        'name' : req.body.name,
-        'spouse' : req.body.spouse
+        message: 'I love you too',
+        yourLove: req.body.spouseName
     }).status(201);
 });
 
