@@ -33,8 +33,6 @@ app.post('/love',(req, res)=>{
     res.send({
         'name' : req.body.name,
         'spouse' : req.body.spouse
-        
-
     }).status(201);
 });
 

@@ -18,13 +18,16 @@
     </script>   
 
     <input type="text" id="nameInput" placeholder="Type your name here" />
+    <input type="text" id="nameInput1" placeholder="Type spouse name here" />
+
     <button id="submitButton">Submit</button>
 
     <script>
         const button = document.getElementById('submitButton');
         button.addEventListener('click',()=>{
             const name = document.getElementById('nameInput').value;
-            const jsonInput = {name}
+            const spouseName = document.getElementById('nameInput1').value;
+            const jsonInput = {name, spouseName};
             fetch('http://localhost:3000/love', {
                 method:'POST',
                 headers: {
